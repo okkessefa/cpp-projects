@@ -1,0 +1,22 @@
+# Ignore VS Code settings
+.vscode/
+.vscode
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore Python cache (if you're working in Python)
+__pycache__/
+*.pyc
+
+# Java class files (if relevant)
+*.class
+
+# Ignore compiled files
+*.o
+*.exe
+
+# Ignore virtual environments
+venv/
+.env/
