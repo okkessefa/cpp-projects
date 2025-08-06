@@ -25,14 +25,43 @@ void taskManager::run(){
     }
 }
 
+void taskManager::checkTask(const std::string element){
+    for(int i = 0; i< tasks.size(); i++){
+        if(element == tasks[i]){
+            std::cout<<"Task added succesfully"<<std::endl;
+        }
+        else{
+            std::cout<<"Something went wrong, try again"<<std::endl;
+            return (taskadd());
+        }
+    }
+}
 
 // Prompts the user to enter a new task and adds it to the task list.
 void taskManager::taskadd(){
-    std::cout<<"add task"<<std::endl;
+    std::string newTask;
+    std::cout<<"Enter the task you want to add: "; std::getline(std::cin, newTask);
+    if(newTask.empty()){
+        std::cout<<"Unvalid attempt"<<std::endl;
+        return (taskadd());
+    }
+    else{
+        tasks.push_back(newTask);
+        checkTask(newTask);
+    }
 }
 // Displays all current tasks in the list with numbered order. 
 void taskManager::tasklist(){
-    std::cout<<"see list"<<std::endl;
+    if(tasks.empty()){
+        std::cout<<"The list is empty"<<std::endl;
+    }
+    else{
+        std::cout<<"------------------------------------------------------------"<<std::endl;
+        for(int i = 0; i< tasks.size(); i++){
+            std::cout<< i << ". task -> " <<tasks[i]<<std::endl;
+        }
+        std::cout<<"------------------------------------------------------------"<<std::endl;
+    }
 }
 // Prompts the user to enter the number of a task to remove it from the list.
 void taskManager::taskremove(){
