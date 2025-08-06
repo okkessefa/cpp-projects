@@ -15,7 +15,7 @@ class taskManager{
     std::map<std::string, std::function<void(void)>> commandMap;
     bool running;
     
-    void checkTask(const std::string element);
+    bool checkTask(const std::string element);
     void taskadd();
     void tasklist();
     void taskremove();

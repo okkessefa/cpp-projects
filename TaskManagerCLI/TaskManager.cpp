@@ -25,16 +25,13 @@ void taskManager::run(){
     }
 }
 
-void taskManager::checkTask(const std::string element){
+bool taskManager::checkTask(const std::string element){
     for(int i = 0; i< tasks.size(); i++){
         if(element == tasks[i]){
-            std::cout<<"Task added succesfully"<<std::endl;
-        }
-        else{
-            std::cout<<"Something went wrong, try again"<<std::endl;
-            return (taskadd());
+            return true;
         }
     }
+    return false;
 }
 
 // Prompts the user to enter a new task and adds it to the task list.
@@ -47,7 +44,12 @@ void taskManager::taskadd(){
     }
     else{
         tasks.push_back(newTask);
-        checkTask(newTask);
+        if(checkTask(newTask)){
+            std::cout<<"Task added succesfully"<<std::endl;
+        }else{
+            std::cout<<"Something went wrong, try again"<<std::endl;
+            return taskadd();
+        }
     }
 }
 // Displays all current tasks in the list with numbered order. 
@@ -58,7 +60,7 @@ void taskManager::tasklist(){
     else{
         std::cout<<"------------------------------------------------------------"<<std::endl;
         for(int i = 0; i< tasks.size(); i++){
-            std::cout<< i << ". task -> " <<tasks[i]<<std::endl;
+            std::cout<< i +1 << ". task -> " <<tasks[i]<<std::endl;
         }
         std::cout<<"------------------------------------------------------------"<<std::endl;
     }
