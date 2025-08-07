@@ -63,11 +63,28 @@ void taskManager::tasklist(){
             std::cout<< i +1 << ". task -> " <<tasks[i]<<std::endl;
         }
         std::cout<<"------------------------------------------------------------"<<std::endl;
+        std::cout<<"Task count: "<<tasks.size()<<std::endl;
+        std::cout<<"------------------------------------------------------------"<<std::endl;
     }
 }
 // Prompts the user to enter the number of a task to remove it from the list.
 void taskManager::taskremove(){
-    std::cout<<"remove task"<<std::endl;
+    int choice;
+    std::cout<<"Enter the task order you want to delete: "; std::cin>>choice;
+    if(choice <= 0 || choice > tasks.size() ){
+        std::cout<<"Unvalid attempt"<<std::endl;
+        return (taskremove());
+    }
+    else{
+        tasks.erase(tasks.begin() + (choice - 1));
+        if(!checkTask(std::to_string(choice))){
+            std::cout<<"Task removed succesfully"<<std::endl;
+        }else{
+            std::cout<<"Something went wrong, try again"<<std::endl;
+            return taskremove();
+        }
+    }
+    
     
 }
 // Exits the task manager application.                                 
