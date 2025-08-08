@@ -12,7 +12,7 @@ class taskList{
     taskList();
     ~taskList();
     
-    void add(const std::string& task);
+    void add(const std::string& task, const int& position);
     bool remove(int index);
     void display() const;
     bool exist(const std::string& task) const;

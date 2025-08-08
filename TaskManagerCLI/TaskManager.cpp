@@ -33,12 +33,14 @@ bool taskManager::checkTask(const std::string& element){
 // Prompts the user to enter a new task and adds it to the task list.
 void taskManager::taskadd(){
     std::string newTask;
+    int position;
     std::cout<<"Enter the task you want to add: "; std::getline(std::cin, newTask);
+    std::cout<<"Enter the order you want to insert: "; std::cin>>newTask;
     if(newTask.empty()){
         std::cout<<"Unvalid attempt"<<std::endl;
         return (taskadd());
     }
-    taskList.add(newTask);
+    taskList.add(newTask,position);
     if(checkTask(newTask)){
         std::cout<<"Task added succesfully"<<std::endl;
     }else{
