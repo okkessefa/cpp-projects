@@ -1,4 +1,5 @@
 #include "TaskManager.h"
+#include <iostream>
 
 taskManager::taskManager() : running(true)  {
     commandMap["add"]    = std::bind(&taskManager::taskadd, this);
@@ -25,13 +26,8 @@ void taskManager::run(){
     }
 }
 
-bool taskManager::checkTask(const std::string element){
-    for(int i = 0; i< tasks.size(); i++){
-        if(element == tasks[i]){
-            return true;
-        }
-    }
-    return false;
+bool taskManager::checkTask(const std::string& element){
+    return taskList.exist(element);
 }
 
 // Prompts the user to enter a new task and adds it to the task list.
@@ -42,48 +38,31 @@ void taskManager::taskadd(){
         std::cout<<"Unvalid attempt"<<std::endl;
         return (taskadd());
     }
-    else{
-        tasks.push_back(newTask);
-        if(checkTask(newTask)){
-            std::cout<<"Task added succesfully"<<std::endl;
-        }else{
-            std::cout<<"Something went wrong, try again"<<std::endl;
-            return taskadd();
-        }
+    taskList.add(newTask);
+    if(checkTask(newTask)){
+        std::cout<<"Task added succesfully"<<std::endl;
+    }else{
+        std::cout<<"Something went wrong, try again"<<std::endl;
+        return taskadd();
     }
 }
+
 // Displays all current tasks in the list with numbered order. 
 void taskManager::tasklist(){
-    if(tasks.empty()){
-        std::cout<<"The list is empty"<<std::endl;
-    }
-    else{
-        std::cout<<"------------------------------------------------------------"<<std::endl;
-        for(int i = 0; i< tasks.size(); i++){
-            std::cout<< i +1 << ". task -> " <<tasks[i]<<std::endl;
-        }
-        std::cout<<"------------------------------------------------------------"<<std::endl;
-        std::cout<<"Task count: "<<tasks.size()<<std::endl;
-        std::cout<<"------------------------------------------------------------"<<std::endl;
-    }
+    taskList.display();
 }
 // Prompts the user to enter the number of a task to remove it from the list.
 void taskManager::taskremove(){
     int choice;
-    std::cout<<"Enter the task order you want to delete: "; std::cin>>choice;
-    if(choice <= 0 || choice > tasks.size() ){
+    std::cout<<"Enter the task order you want to delete: "; 
+    std::cin>>choice;
+    std::cin.ignore();
+    if(!taskList.remove(choice)){
         std::cout<<"Unvalid attempt"<<std::endl;
-        return (taskremove());
+        return taskremove();
     }
-    else{
-        tasks.erase(tasks.begin() + (choice - 1));
-        if(!checkTask(std::to_string(choice))){
-            std::cout<<"Task removed succesfully"<<std::endl;
-        }else{
-            std::cout<<"Something went wrong, try again"<<std::endl;
-            return taskremove();
-        }
-    }
+    std::cout<<"Task removed succesfully"<<std::endl;
+        
     
     
 }

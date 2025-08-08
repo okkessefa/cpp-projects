@@ -1,28 +1,25 @@
 #ifndef TASKMANAGER_H
 #define TASKMANAGER_H
 
-#include <iostream>
 #include <map>
 #include <functional>
-#include <vector>
 #include <string>
+#include "TaskList.h"
 
-
-class taskManager{
-
-    private:
-    std::vector<std::string> tasks;
+class taskManager {
+private:
+    taskList taskList;
     std::map<std::string, std::function<void(void)>> commandMap;
     bool running;
-    
-    bool checkTask(const std::string element);
+
+    bool checkTask(const std::string&);
     void taskadd();
     void tasklist();
     void taskremove();
     void Appexit();
     void showhelp();
-    
-    public:
+
+public:
     taskManager();
     void run();
 };

@@ -10,6 +10,9 @@ int main()
 // try this to compile the code
 // as much as i experienced after making any changes in TaskManager.cpp file and want to 
 // run the program you have to follow this order
-//g++ -std=c++17 -g -o taskManagerCLI.exe main.cpp TaskManager.cpp
+//g++ -std=c++17 -g -o taskManagerCLI.exe main.cpp TaskManager.cpp TaskList.cpp
+
 // check if this code that in the previous line does not return any 
 // run the code taskManagerCLI.exe 
+
+// enhance it with linked list data type
