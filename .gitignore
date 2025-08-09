@@ -9,6 +9,10 @@
 \*.out
 \*.app
 
+*.exe
+*.out
+*.app
+
 # Static and dynamic libraries
 
 \*.a
