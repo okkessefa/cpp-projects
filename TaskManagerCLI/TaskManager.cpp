@@ -15,7 +15,7 @@ void taskManager::run(){
     std::cout<<"Welcome to Task Manager\n"<<std::endl;
     showhelp();
     while(running){
-        std::cout<<">"; std::getline(std::cin, input);
+        std::cout<<"> "; std::getline(std::cin, input);
         
         if(input.empty()) continue;
         auto it = commandMap.find(input);
@@ -86,6 +86,7 @@ void taskManager::taskremove(){
 }
 // Exits the task manager application.                                 
 void taskManager::Appexit(){
+    std::cout<<"Goodbye!"<<std::endl;
     running = false;
 }    
 // Displays a list of available commands with brief descriptions.
