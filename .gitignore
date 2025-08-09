@@ -1,84 +1,22 @@
-# Compiled object files
-
-\*.o
-\*.obj
-
-# Compiled binary files
-
-\*.exe
-\*.out
-\*.app
-
-*.exe
-*.out
-*.app
-
-# Static and dynamic libraries
-
-\*.a
-\*.lib
-\*.so
-\*.dylib
-
-# IDE / Editor folders
-
+# Ignore VS Code settings
 .vscode/
-.idea/
-\*.suo
-\*.user
-\*.userossc
-\*.sln.docstates
+.vscode
 
-# OS-specific files
-
+# Ignore OS-specific files
+.DS_Store
 Thumbs.db
-desktop.ini
-.DS\_Store
 
-# Python cache (if applicable)
+# Ignore Python cache (if you're working in Python)
+__pycache__/
+*.pyc
 
-**pycache**/
-\*.pyc
-\*.pyo
-\*.pyd
+# Java class files (if relevant)
+*.class
 
-# Java class files (if applicable)
+# Ignore compiled files
+*.o
+*.exe
 
-\*.class
-
-# Virtual environments
-
+# Ignore virtual environments
 venv/
 .env/
-
-# Build directories
-
-build/
-dist/
-Debug/
-Release/
-
-# Logs and temporary files
-
-\*.log
-\*.tmp
-\*.temp
-\*.bak
-
-# CMake build folders
-
-CMakeFiles/
-CMakeCache.txt
-cmake\_install.cmake
-Makefile
-
-# Coverage and test reports
-
-coverage/
-\*.gcda
-\*.gcno
-\*.gcov
-
-# Backup files
-
-\*\~
