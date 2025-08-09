@@ -1,5 +1,6 @@
 #include "TaskManager.h"
 #include <iostream>
+#include <limits>
 
 taskManager::taskManager() : running(true)  {
     commandMap["add"]    = std::bind(&taskManager::taskadd, this);
@@ -34,12 +35,24 @@ bool taskManager::checkTask(const std::string& element){
 void taskManager::taskadd(){
     std::string newTask;
     int position;
-    std::cout<<"Enter the task you want to add: "; std::getline(std::cin, newTask);
-    std::cout<<"Enter the order you want to insert: "; std::cin>>newTask;
+    
+    std::cout<<"Enter the task you want to add: "; 
+    std::getline(std::cin, newTask);
+    
     if(newTask.empty()){
         std::cout<<"Unvalid attempt"<<std::endl;
         return (taskadd());
     }
+    
+    std::cout<<"Enter the order you want to insert: "; 
+    if( !(std::cin >> position) ) {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout<<"Unvalid attempt"<<std::endl;
+        return taskadd();
+    }
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
     taskList.add(newTask,position);
     if(checkTask(newTask)){
         std::cout<<"Task added succesfully"<<std::endl;
@@ -55,17 +68,20 @@ void taskManager::tasklist(){
 }
 // Prompts the user to enter the number of a task to remove it from the list.
 void taskManager::taskremove(){
-    int choice;
-    std::cout<<"Enter the task order you want to delete: "; 
-    std::cin>>choice;
-    std::cin.ignore();
-    if(!taskList.remove(choice)){
-        std::cout<<"Unvalid attempt"<<std::endl;
-        return taskremove();
+    if(!taskList.isEmpty()){
+        std::cerr<<"List is empty.\n";
     }
-    std::cout<<"Task removed succesfully"<<std::endl;
-        
-    
+    else{
+        int choice;
+        std::cout<<"Enter the task order you want to delete: "; 
+        std::cin>>choice;
+        std::cin.ignore();
+        if(!taskList.remove(choice)){
+            std::cout<<"Unvalid attempt"<<std::endl;
+            return taskremove();
+        }
+        std::cout<<"Task removed succesfully"<<std::endl;
+    }
     
 }
 // Exits the task manager application.                                 

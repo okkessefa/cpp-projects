@@ -17,6 +17,7 @@ class taskList{
     void display() const;
     bool exist(const std::string& task) const;
     int size() const;
+    bool isEmpty() const;
 
 };
 
