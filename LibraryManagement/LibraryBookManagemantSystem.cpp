@@ -55,11 +55,6 @@ class Library{
     // some attributes
     Library(std::string title, std::string author, std::string id, std::string year) 
         : Title(title), Author(author), ID(id), Year(year) {}
-        
-        // std::string getTitle() const { return Title;}
-        // std::string getAuthor() const { return Author;}
-        // std::string getID() const { return ID;}
-        // int getYear() const { return Year;}
 };
           
 // ##############################################################################################################################################################################
@@ -266,32 +261,7 @@ class Library{
     }
     // ✅
     
-    
-// do not forget to use operate os function to enhencing the useability of class objects
-// std::ostream& operator<<(std::ostream& os, const Library& book){
-//     os << "Name: "   << book.getTitle()
-//        << "- Author: " <<  book.getAuthor()
-//        << "- ID: "     <<  book.getID()
-//        << "- Year: "   <<  book.getYear(); 
-//     return os;
-// }
-
-
-
-// Track the last borrowed books using a sta-ck
 int main(){
-    // std::vector<Library> BookInfoList;
-
-    // Name, Author, ID, year 
-    // Library b1("Pride and Prejudice", "Jane Austen", "BN001", 1813);
-    // Library b2("The Great Gatsby", "F. Scott Fitzgerald", "BN002", 1925);
-    // Library b3("To Kill a Mockingbird", "Harper Lee", "BN003", 1960);
-    // Library b4("Moby-Dick", "Herman Melville", "BN004", 1851);
-    
-    // BookInfoList.push_back(b1);
-    // BookInfoList.push_back(b2);
-    // BookInfoList.push_back(b3);
-    // BookInfoList.push_back(b4);
 
     Library lib("", "", "", "");  // dummy fields (your methods use the file)
     int option;
