@@ -1,0 +1,5 @@
+Pride and Prejudice|Jane Austen|BN1|1813
+The Great Gatsby|Scott Fitzgerald|BN2|1925
+To Kill a Mockingbird|Harper Lee|BN3|1960
+Moby Dick|Herman Melville|BN4|1851
+Anne Of Green Gables|L. M. Montgomery|BN5|1908
